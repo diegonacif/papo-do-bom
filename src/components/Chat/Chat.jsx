@@ -51,26 +51,33 @@ export const Chat = (props) => {
   return (
     <div className="chat-container">
       <div className="header">
-        <h1 className="text-3xl font-bold underline">Welcome to: {room.toUpperCase()}</h1>
+        <h1 className="text-2xl font-bold">Sala: {room.toUpperCase()}</h1>
       </div>
-      <div className="messages">
+
+      <div className="messages flex flex-col gap-y-1 mt-4">
         {
           messages.map((message) => (
-            <div className="message" key={message.id}>
-              <span className="user">{message.user}</span>
-              <p>{message.text}</p>
+            <div className="message flex" key={message.id}>
+              <span className="user font-bold">{message.user}:</span>
+              <p className="ml-2">{message.text}</p>
             </div>
           ))
         }
       </div>
-      <form onSubmit={handleSubmit} className="new-message-form">
+
+      <form onSubmit={handleSubmit} className="new-message-form flex gap-x-4 mt-4">
         <input 
-          className="new-message-input" 
+          className="new-message-input px-2 text-gray-900 rounded" 
           placeholder="Type your message here..." 
           onChange={(e) => setNewMessage(e.target.value)}
           value={newMessage}
         />
-        <button type="submit" className="send-button">
+        <button 
+          className="send-button bg-indigo-900 px-4 py-1 rounded border-2 border-style-solid border-transparent
+          hover:border-indigo-500
+          transition-colors"
+          type="submit" 
+        >
           Send
         </button>
 
