@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { addDoc, collection, serverTimestamp, onSnapshot, query, where, orderBy } from "firebase/firestore";
 import { auth, db } from "../../firebase-config";
+import avatarImg from '../../assets/google-logo.png'
 
 export const Chat = (props) => {
   const { room } = props;
@@ -35,33 +36,45 @@ export const Chat = (props) => {
       text: newMessage,
       createdAt: serverTimestamp(),
       user: auth.currentUser.displayName,
+      userPhotoUrl: auth.currentUser.photoURL,
       room,
     });
 
     setNewMessage("");
   }
 
+  console.log(auth.currentUser.photoURL)
+
   return (
     <div className="chat-container 
       grid grid-rows-[auto_min-content]
       h-full w-screen px-4 overflow-scroll"
     >
-      {/* <div className="header bg-gradient-to-b from-indigo-600">
-        <h1 className="text-2xl font-bold">Sala: {room.toUpperCase()}</h1>
-      </div> */}
-
-      <div className="messages flex flex-col w-full max-w-full max-h-full overflow-y-scroll gap-y-3 py-4">
+      <div className="messages 
+        flex flex-col w-full max-w-full max-h-full overflow-y-scroll gap-y-3 py-4 pl-12
+        "
+      >
         {
           messages.map((message) => (
             <div 
-              className={`message flex flex-col w-fit max-w-full px-3 py-2 rounded
+              className={`message relative
+              flex flex-col w-fit max-w-full px-3 py-2 rounded
               md:max-w-lg
               ${message.user == auth.currentUser.displayName ?
               'bg-indigo-900' : 'bg-neutral-700'}
               ${message.user == auth.currentUser.displayName &&
               'self-end'}`}
               key={message.id}
-            >
+            > 
+              {
+                message.user !== auth.currentUser.displayName &&
+                <div className="display-avatar-wrapper absolute
+                  -left-11 top-4
+                  "
+                >
+                  <img className="w-8 rounded" src={message.userPhotoUrl} alt="" />
+                </div>
+              }
               <span className="user min-w-max font-bold">
                 {message.user}:
               </span>
