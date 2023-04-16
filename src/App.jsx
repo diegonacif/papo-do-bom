@@ -69,8 +69,9 @@ export const App = () => {
           </div>
           <Chat room={room} />
         </> :
-        <>
-          <div className="logo mt-12">
+        
+        <div className="room-seletor flex flex-col h-screen items-center justify-center">
+          <div className="logo">
             <img src={logo} alt="Papo do Bom logo" />
             <h2 className="text-center font-cursive text-indigo-400 text-3xl mt-1 subpixel-antialiased">Papo do Bom</h2>
           </div>
@@ -100,7 +101,7 @@ export const App = () => {
           >
             <SignOut size={32} />
           </button>
-        </>
+        </div>
       } 
 
       

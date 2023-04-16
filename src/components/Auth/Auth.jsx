@@ -22,7 +22,7 @@ export const Auth = ({ setIsAuth }) => {
     flex flex-col justify-center items-center 
     h-full min-h-screen 
     bg-neutral-800 text-gray-100">
-      <div className="logo mt-12">
+      <div className="logo">
         <img src={logo} alt="Papo do Bom logo" />
         <h2 className="text-center font-cursive text-indigo-400 text-3xl mt-1 subpixel-antialiased">Papo do Bom</h2>
       </div>
