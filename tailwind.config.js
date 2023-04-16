@@ -22,6 +22,7 @@ export default {
       white: colors.white,
       gray: colors.gray,
       indigo: colors.indigo,
+      neutral: colors.neutral,
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
