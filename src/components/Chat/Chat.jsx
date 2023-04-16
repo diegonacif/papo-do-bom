@@ -87,7 +87,7 @@ export const Chat = (props) => {
       <form onSubmit={handleSubmit} className="new-message-form flex gap-x-4 pb-4">
         <input 
           className="new-message-input w-full px-2 text-gray-900 rounded" 
-          placeholder="Type your message here..." 
+          placeholder="Digite sua mensagem aqui..." 
           onChange={(e) => setNewMessage(e.target.value)}
           value={newMessage}
         />
@@ -101,7 +101,7 @@ export const Chat = (props) => {
           transition-colors select-none"
           type="submit" 
         >
-          Send
+          Enviar
         </button>
 
       </form>

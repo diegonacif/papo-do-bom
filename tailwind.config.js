@@ -27,6 +27,7 @@ export default {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      cursive: ['Sedgwick Ave Display', 'cursive']
     },
     
     extend: {

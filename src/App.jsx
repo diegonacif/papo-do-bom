@@ -7,6 +7,8 @@ import { Chat } from './components/Chat/Chat';
 import { signOut } from 'firebase/auth'
 import { auth } from './firebase-config'
 
+import logo from './assets/papo-logo.png';
+
 const cookies = new Cookies();
 
 export const App = () => {
@@ -42,7 +44,7 @@ export const App = () => {
             flex justify-between w-full px-4 py-2
             bg-gradient-to-bl from-indigo-600"
           >
-            <h1 className="text-2xl font-bold">Sala: {room.toUpperCase()}</h1>
+            <h1 className="text-2xl font-bold">{room.toUpperCase()}</h1>
             <div className="sign-out">
               <button 
                 className="bg-gradient-to-br from-indigo-600 to-indigo-900
@@ -53,25 +55,31 @@ export const App = () => {
                 transition-colors select-none"
                 onClick={signUserOut}
               >
-                Sign Out
+                Deslogar
               </button>
             </div>
           </div>
           <Chat room={room} />
         </> :
-        <div className="room flex flex-col md:flex-row items-center gap-4">
-          <label className="text-indigo-400 font-bold">Enter Room Name:</label>
-          <input ref={roomInputRef} className="w-48 h-8 px-2 text-gray-900 rounded" />
-          <button 
-            className="bg-gradient-to-br from-indigo-600 to-indigo-900
-            px-4 py-2 rounded border-2 border-style-solid border-neutral-800
-            active:hover:border-indigo-500
-            md:hover:border-indigo-500
-            transition-colors select-none"
-            onClick={() => setRoom(roomInputRef.current.value)}>
-            Enter Chat
-          </button>
-        </div>
+        <>
+          <div className="logo mt-12">
+            <img src={logo} alt="Papo do Bom logo" />
+            <h2 className="text-center font-cursive text-indigo-400 text-3xl mt-1 subpixel-antialiased">Papo do Bom</h2>
+          </div>
+          <div className="room flex flex-col md:flex-row items-center gap-4 mt-12">
+            <label className="text-indigo-400 font-bold">Nome da Sala:</label>
+            <input ref={roomInputRef} className="w-48 h-8 px-2 text-gray-900 rounded" />
+            <button 
+              className="bg-gradient-to-br from-indigo-600 to-indigo-900
+              px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+              active:hover:border-indigo-500
+              md:hover:border-indigo-500
+              transition-colors select-none"
+              onClick={() => setRoom(roomInputRef.current.value)}>
+              Entrar
+            </button>
+          </div>
+        </>
       } 
 
       
