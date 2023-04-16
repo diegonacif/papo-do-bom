@@ -75,31 +75,32 @@ export const App = () => {
             <img src={logo} alt="Papo do Bom logo" />
             <h2 className="text-center font-cursive text-indigo-400 text-3xl mt-1 subpixel-antialiased">Papo do Bom</h2>
           </div>
-          <div className="room flex flex-col md:flex-row items-center gap-4 mt-12">
+          <div className="room flex flex-col md:flex-row items-center mt-12 md:gap-4">
             <label className="text-indigo-400 font-bold">Nome da Sala:</label>
-            <input ref={roomInputRef} className="w-48 h-8 px-2 text-gray-900 rounded" />
+            <input ref={roomInputRef} maxLength="18" className="w-48 h-8 px-2 text-gray-900 text-center rounded mt-1" />
             <button 
               className="bg-gradient-to-br from-indigo-600 to-indigo-900
-              px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+              mt-4 px-4 py-2 rounded border-2 border-style-solid border-neutral-800
               active:hover:border-indigo-500
               md:hover:border-indigo-500
-              transition-colors select-none"
+              transition-colors select-none antialiased"
               onClick={() => setRoom(roomInputRef.current.value.toLowerCase())}>
               Entrar
             </button>
           </div>
           <button 
-            className="absolute
-            top-[5vh] right-[5vw]
+            className="
+            flex gap-2
             bg-gradient-to-br from-indigo-600 to-indigo-900
             font-medium
-            px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+            mt-16 px-4 py-2 rounded border-2 border-style-solid border-neutral-800
             active:hover:border-indigo-500
             md:hover:border-indigo-500
-            transition-colors select-none"
+            transition-colors select-none antialiased"
             onClick={signUserOut}
           >
-            <SignOut size={32} />
+            <span>Deslogar</span>
+            <SignOut weight="duotone" size={24} />
           </button>
         </div>
       } 
