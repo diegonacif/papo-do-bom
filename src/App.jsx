@@ -49,7 +49,7 @@ export const App = () => {
         room ? 
         <>
           <div className="header 
-            flex justify-between w-full px-4 py-2
+            flex justify-between items-center w-full px-4 py-2
             bg-gradient-to-bl from-indigo-600"
           >
             <h1 className="text-2xl font-bold">{room.toUpperCase()}</h1>
@@ -84,7 +84,7 @@ export const App = () => {
               active:hover:border-indigo-500
               md:hover:border-indigo-500
               transition-colors select-none"
-              onClick={() => setRoom(roomInputRef.current.value)}>
+              onClick={() => setRoom(roomInputRef.current.value.toLowerCase())}>
               Entrar
             </button>
           </div>
