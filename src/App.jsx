@@ -33,29 +33,31 @@ export const App = () => {
   return (
     <div className="App 
     flex flex-col justify-center items-center h-full min-h-screen
-    bg-gray-900 text-gray-100 
+    bg-neutral-800 text-gray-100
     subpixel-antialiased"> 
       {
         room ? 
         <Chat room={room} /> : 
         <div className="room flex items-center gap-x-4">
-          <label className="text-indigo-500 font-bold">Enter Room Name:</label>
+          <label className="text-indigo-400 font-bold">Enter Room Name:</label>
           <input ref={roomInputRef} className="w-48 h-8 px-2 text-gray-900 rounded" />
           <button 
-            className="bg-indigo-900 px-4 py-2 rounded border-2 border-style-solid border-transparent
-            hover:border-indigo-500
-            transition-colors"
+            className="bg-gradient-to-br from-indigo-600 to-indigo-900
+            px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+            hover:border-indigo-500 hover:bg-neutral-800
+            transition-colors select-none"
             onClick={() => setRoom(roomInputRef.current.value)}>
             Enter Chat
           </button>
         </div>
       } 
 
-      <div className="sign-out bg-gray-900 text-gray-100 mt-8">
+      <div className="sign-out mt-8">
         <button 
-          className="bg-indigo-900 px-4 py-2 rounded border-2 border-style-solid border-transparent
-          hover:border-indigo-500
-          transition-colors"
+          className="bg-gradient-to-br from-indigo-600 to-indigo-900
+          px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+          hover:border-indigo-500 hover:bg-neutral-800
+          transition-colors select-none"
           onClick={signUserOut}
         >
           Sign Out
