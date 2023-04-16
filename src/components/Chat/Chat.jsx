@@ -6,11 +6,6 @@ export const Chat = (props) => {
   const { room } = props;
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const testing = [
-    {text: "opa"},
-    {text: "eita"},
-    {text: "caraca"}
-  ]
 
   const messagesRef = collection(db, "messages");
 
@@ -49,16 +44,24 @@ export const Chat = (props) => {
   console.log(messages);
 
   return (
-    <div className="chat-container">
+    <div className="chat-container w-screen px-4">
       <div className="header">
         <h1 className="text-2xl font-bold">Sala: {room.toUpperCase()}</h1>
       </div>
 
-      <div className="messages flex flex-col gap-y-1 mt-4">
+      <div className="messages flex flex-col w-full gap-y-3 mt-4">
         {
           messages.map((message) => (
-            <div className="message flex" key={message.id}>
-              <span className="user font-bold">{message.user}:</span>
+            <div 
+              className={`message flex w-max max-w-full px-2 py-1 rounded
+              bg-neutral-700 
+              md:max-w-lg
+              ${message.user == auth.currentUser.displayName && 'self-end'}`}
+              key={message.id}
+            >
+              <span className="user min-w-max font-bold">
+                {message.user}:
+              </span>
               <p className="ml-2">{message.text}</p>
             </div>
           ))
@@ -73,9 +76,13 @@ export const Chat = (props) => {
           value={newMessage}
         />
         <button 
-          className="send-button bg-indigo-900 px-4 py-1 rounded border-2 border-style-solid border-transparent
-          hover:border-indigo-500
-          transition-colors"
+          className="send-button
+          font-medium
+          bg-gradient-to-br from-indigo-600 to-indigo-900
+          px-4 py-1 rounded border-2 border-style-solid border-neutral-800
+          active:hover:border-indigo-500
+          md:hover:border-indigo-500
+          transition-colors select-none"
           type="submit" 
         >
           Send

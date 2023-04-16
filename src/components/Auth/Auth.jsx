@@ -21,10 +21,11 @@ export const Auth = ({ setIsAuth }) => {
     flex flex-col justify-center items-center 
     h-full min-h-screen 
     bg-neutral-800 text-gray-100">
-      <p className="text-lg">Sign in with google to continue</p>
+      <p className="text-lg font-semibold">Sign in with google to continue</p>
       <button 
         className="flex justify-center items-center gap-x-3
         bg-neutral-900 px-4 py-2 mt-4 rounded
+        font-semibold
         border-2 border-style-solid border-indigo-700
         active:border-indigo-500
         md:hover:border-indigo-500
