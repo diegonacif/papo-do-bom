@@ -77,7 +77,7 @@ export const Chat = (props) => {
                 {message.user}
               </span>
               <p className="mt-1">{message.text}</p>
-              <span className="text-xs self-end mt-1 opacity-50">{message.createdAt.toDate().toLocaleTimeString("pr-BR")}</span>
+              <span className="text-xs self-end mt-1 opacity-50">{message.createdAt?.toDate().toLocaleTimeString("pr-BR")}</span>
             </div>
           ))
         }
