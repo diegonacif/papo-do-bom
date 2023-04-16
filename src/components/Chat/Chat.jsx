@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addDoc, collection, serverTimestamp, onSnapshot, query, where, orderBy } from "firebase/firestore";
 import { auth, db } from "../../firebase-config";
 import avatarImg from '../../assets/google-logo.png'
@@ -9,7 +9,23 @@ export const Chat = (props) => {
   const [messages, setMessages] = useState([]);
 
   const messagesRef = collection(db, "messages");
+  const messagesRefScroll = useRef();
 
+
+  // Scroll to Bottom
+  useEffect(() => {
+    if (messagesRefScroll.current) {
+      messagesRefScroll.current.scrollIntoView(
+        {
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'nearest'
+        })
+    }
+  }, [messages])
+
+
+  // GOLDEN REALTIME SYNC DATABASE
   useEffect(() => {
     const queryMessages = query(
       messagesRef, 
@@ -81,6 +97,7 @@ export const Chat = (props) => {
             </div>
           ))
         }
+        <div ref={messagesRefScroll}></div>
       </div>
 
       <form onSubmit={handleSubmit} className="new-message-form flex gap-x-4 pb-4">
