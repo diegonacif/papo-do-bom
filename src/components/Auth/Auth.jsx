@@ -1,6 +1,7 @@
 import { auth, provider } from '../../firebase-config.js';
 import { signInWithPopup } from 'firebase/auth';
 import googleLogo from '../../assets/google-logo.png';
+import logo from '../../assets/papo-logo.png';
 
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
@@ -21,7 +22,11 @@ export const Auth = ({ setIsAuth }) => {
     flex flex-col justify-center items-center 
     h-full min-h-screen 
     bg-neutral-800 text-gray-100">
-      <p className="text-lg font-semibold">Use sua conta google para continuar</p>
+      <div className="logo mt-12">
+        <img src={logo} alt="Papo do Bom logo" />
+        <h2 className="text-center font-cursive text-indigo-400 text-3xl mt-1 subpixel-antialiased">Papo do Bom</h2>
+      </div>
+      <p className="text-lg font-semibold mt-16">Use sua conta google para continuar</p>
       <button 
         className="flex justify-center items-center gap-x-3
         bg-neutral-900 px-4 py-2 mt-4 rounded

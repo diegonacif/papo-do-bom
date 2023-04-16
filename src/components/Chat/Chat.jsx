@@ -43,8 +43,6 @@ export const Chat = (props) => {
     setNewMessage("");
   }
 
-  console.log(auth.currentUser.photoURL)
-
   return (
     <div className="chat-container 
       grid grid-rows-[auto_min-content]
@@ -75,8 +73,8 @@ export const Chat = (props) => {
                   <img className="w-8 rounded" src={message.userPhotoUrl} alt="" />
                 </div>
               }
-              <span className="user min-w-max font-bold">
-                {message.user}:
+              <span className="user min-w-max font-bold text-sm">
+                {message.user}
               </span>
               <p className="mt-1">{message.text}</p>
             </div>

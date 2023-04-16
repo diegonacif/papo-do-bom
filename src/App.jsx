@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useSessionStorage } from 'usehooks-ts'
 import { Auth } from './components/Auth/Auth'
 
 import Cookies from 'universal-cookie';
@@ -8,12 +9,15 @@ import { signOut } from 'firebase/auth'
 import { auth } from './firebase-config'
 
 import logo from './assets/papo-logo.png';
+import { SignOut } from '@phosphor-icons/react';
 
 const cookies = new Cookies();
 
 export const App = () => {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useSessionStorage("current-room", "");
+
+  console.log(room)
 
   const roomInputRef = useRef(null);
 
@@ -21,6 +25,10 @@ export const App = () => {
     await signOut(auth)
     cookies.remove("auth-token")
     setIsAuth(false)
+    setRoom(null)
+  }
+
+  const handleExitRoom = () => {
     setRoom(null)
   }
 
@@ -53,9 +61,9 @@ export const App = () => {
                 active:hover:border-indigo-500
                 md:hover:border-indigo-500
                 transition-colors select-none"
-                onClick={signUserOut}
+                onClick={handleExitRoom}
               >
-                Deslogar
+                Sair
               </button>
             </div>
           </div>
@@ -79,6 +87,19 @@ export const App = () => {
               Entrar
             </button>
           </div>
+          <button 
+            className="absolute
+            top-[5vh] right-[5vw]
+            bg-gradient-to-br from-indigo-600 to-indigo-900
+            font-medium
+            px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+            active:hover:border-indigo-500
+            md:hover:border-indigo-500
+            transition-colors select-none"
+            onClick={signUserOut}
+          >
+            <SignOut size={32} />
+          </button>
         </>
       } 
 
