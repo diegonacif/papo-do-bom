@@ -81,6 +81,7 @@ export const App = () => {
             <button 
               className="flex items-center gap-x-2 bg-gradient-to-br from-indigo-600 to-indigo-900
               mt-4 md:mt-0 px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+              font-medium
               active:hover:border-indigo-500
               md:hover:border-indigo-500
               transition-colors select-none antialiased"
