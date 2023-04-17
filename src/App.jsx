@@ -9,7 +9,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from './firebase-config'
 
 import logo from './assets/papo-logo.png';
-import { SignOut } from '@phosphor-icons/react';
+import { DoorOpen, SignOut } from '@phosphor-icons/react';
 
 const cookies = new Cookies();
 
@@ -77,15 +77,16 @@ export const App = () => {
           </div>
           <div className="room flex flex-col md:flex-row items-center mt-12 md:gap-4">
             <label className="text-indigo-400 font-bold">Nome da Sala:</label>
-            <input ref={roomInputRef} maxLength="18" className="w-48 h-8 px-2 text-gray-900 text-center rounded mt-1" />
+            <input ref={roomInputRef} maxLength="18" className="w-48 h-10 px-2 text-gray-900 text-center rounded mt-1 md:mt-0" />
             <button 
-              className="bg-gradient-to-br from-indigo-600 to-indigo-900
-              mt-4 px-4 py-2 rounded border-2 border-style-solid border-neutral-800
+              className="flex items-center gap-x-2 bg-gradient-to-br from-indigo-600 to-indigo-900
+              mt-4 md:mt-0 px-4 py-2 rounded border-2 border-style-solid border-neutral-800
               active:hover:border-indigo-500
               md:hover:border-indigo-500
               transition-colors select-none antialiased"
               onClick={() => setRoom(roomInputRef.current.value.toLowerCase())}>
               Entrar
+              <DoorOpen size={28} weight="fill" />
             </button>
           </div>
           <button 
